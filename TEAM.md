@@ -58,6 +58,25 @@ Sao chép mục dưới đây cho từng thành viên.
 - `report/team/chi_so.md`
 - `report/team/2A202603525_BuiGiaHuy.md`
 
+## PhanTrongHau-2A202603547
+
+### Phần việc phụ trách
+
+- CP1–CP2: Viết mô hình chi phí A1–A4 và chạy các kịch bản độ nhạy B1–B4.
+- CP4–CP5: Đối chiếu cỡ mẫu pilot, cung cấp số liệu cho mục rủi ro kinh tế và tổng hợp hồ sơ nhóm.
+
+### Đóng góp cụ thể
+
+- Triển khai và chạy phần A–B trên hai bộ trace của lab. Cả ba phép thử A1 đều đạt. Chi phí cơ sở là 4.472 đ/việc thành công (simulated) và giới hạn hai lần chạy cho tổng chi phí hệ thống thấp nhất trong ba kịch bản B3.
+- Đối chiếu kết quả D1 trong script với kế hoạch pilot. Với 20 nhân viên mỗi nhóm, mức chênh tối thiểu 5 điểm cần khoảng 1.250 quan sát hiệu dụng mỗi nhóm, vượt mức trần 1.000. Mức chênh 6 điểm cần 859 quan sát hiệu dụng và ít nhất 299 yêu cầu mỗi nhân viên theo giả định của kế hoạch.
+- Ghi hai rủi ro kinh tế từ B1 và B4, tổng hợp báo cáo nhóm và hồ sơ Gate 2a từ các kết quả A–E.
+
+### Bằng chứng
+
+- [Code và kết quả A–B](src/lab13.py), [bảng chi phí và độ nhạy](report/team/bang_chi_phi.md)
+- [Kế hoạch pilot](report/team/pilot_plan.yaml), [rủi ro kinh tế](report/team/chi_so.md#e2--rủi-ro-kinh-tế)
+- [Báo cáo cá nhân](report/team/2A202603547_PhanTrongHau.md), [báo cáo nhóm](report/team/group_report.md), [hồ sơ Gate 2a](report/team/ho_so_launch_v0.md)
+
 ## HoVaTen-MSSV
 
 ### Phần việc phụ trách

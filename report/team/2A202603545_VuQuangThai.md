@@ -19,7 +19,7 @@
 - Bộ nhãn người 2 đã được ghi đủ 20 ca trong bảng lỗi. Đối chiếu với Huy đạt **19/20 = 95%** đồng thuận ban đầu. Ca 13: tôi gắn **Giới hạn hệ thống**, Huy gắn **Hệ thống**; nhãn thống nhất là **Giới hạn hệ thống**, theo nguyên nhân gốc là nghiệp vụ ngoài phạm vi trợ lý.
 - Tổng hợp hồ sơ launch từ bảng chi phí và độ nhạy, bảng lỗi, chỉ số và pilot plan. Giữ nhãn `simulated` cho chi phí dùng phút giả lập, phân biệt kết quả lab với điều kiện pilot chưa thực hiện.
 - Hồ sơ ghi chi phí **4.472 đ/việc thành công** toàn mẫu và **4.599 đ/việc** gồm cố định trong phạm vi chọn (đều simulated); nêu rủi ro xem lại 100% có thể lên **12.415 đ/việc** (simulated). Đề xuất hiện tại là **Go có điều kiện**, theo các cổng kiểm tra của nhóm.
-- Tổng hợp báo cáo nhóm CP1–CP5, dẫn nguồn bằng chứng và ghi các phần còn chờ. **Chưa có kết quả duyệt chéo; chưa chấm điểm hoặc ghi quyết định thay hội đồng.**
+- Tổng hợp báo cáo nhóm CP1–CP5 và chuẩn bị phiếu chấm Random23. Điểm phiếu hiện để trống vì cần đối chiếu hồ sơ gốc của nhóm được chấm; phản hồi hội đồng dành cho 3Mien cũng chưa có trong repo.
 
 ## 4. Bằng chứng
 

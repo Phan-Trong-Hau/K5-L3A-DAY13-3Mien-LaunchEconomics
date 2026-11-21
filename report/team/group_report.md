@@ -24,7 +24,7 @@ Nhóm đánh giá chi phí và rủi ro của trợ lý hoàn phí LogiX-VN đ�
 - Chỉ số toàn mẫu: đóng 24 giờ, không mở lại 7 ngày **82,83%**; sửa/bỏ gợi ý **27,12%**; mở lại **4,25%**. Đây là số liệu lab, chưa chứng minh tác động của trợ lý.
 - Pilot đề xuất **20 nhân viên/nhóm**, **299 yêu cầu/người**, tương đương **5.980 yêu cầu/nhóm**, mẫu hiệu dụng **859,20**; MDE 6 điểm phần trăm, power 0,80; giai đoạn phân tích chính **21 ngày** (~570 yêu cầu đủ điều kiện/ngày), ngày quyết định **26/01/2027**.
 - **Đề xuất: Go có điều kiện** cho kế hoạch pilot trong phạm vi đã chọn. Trước bật phải kiểm chứng chống hoàn trùng, ghi sổ, event, roster 40 người/12 depot và lưu lượng thực tế 4 tuần theo từng nhân viên; sau đó đo phút thật, kiểm soát an toàn và chi phí theo các cổng của hồ sơ launch.
-- **Duyệt chéo: Chờ hội đồng.** Chưa có điểm, quyết định hoặc phản hồi; [phiếu chấm](phieu_cham.md) chỉ hoàn thiện khi nhận hồ sơ nhóm được giao.
+- **Duyệt chéo:** Phiếu chấm Random23 đã được đặt đúng tên trong repo, nhưng điểm đang để trống vì cần đối chiếu hồ sơ gốc của nhóm đó. Phản hồi hội đồng dành cho 3Mien cũng chưa có trong repo.
 
 ## 5. Khó khăn và cách xử lý
 

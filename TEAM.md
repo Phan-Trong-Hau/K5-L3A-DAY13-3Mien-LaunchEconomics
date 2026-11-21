@@ -58,22 +58,35 @@ Sao chép mục dưới đây cho từng thành viên.
 - `report/team/chi_so.md`
 - `report/team/2A202603525_BuiGiaHuy.md`
 
-## VuQuangThai-2A202603545
+## PhanTrongHau-2A202603547
 
 ### Phần việc phụ trách
 
-- CP3: người gắn nhãn 2; gắn độc lập 20 ca và đối chiếu với Huy sau khi hoàn thành bộ nhãn riêng.
-- CP1–CP5: giữ hồ sơ launch, tổng hợp kết quả, bằng chứng và trạng thái; tổng hợp báo cáo nhóm. Duyệt chéo và bàn giao Hậu push khi đủ đầu vào.
+- CP1–CP2: Viết mô hình chi phí A1–A4 và chạy các kịch bản độ nhạy B1–B4.
+- CP4–CP5: Đối chiếu cỡ mẫu pilot, cung cấp số liệu cho mục rủi ro kinh tế và tổng hợp hồ sơ nhóm.
 
 ### Đóng góp cụ thể
 
-- Bộ nhãn người 2 đủ 20 ca; đồng thuận ban đầu 19/20 (95%); ca 13 thống nhất Giới hạn hệ thống theo nguyên nhân gốc.
-- Tổng hợp hồ sơ launch 7 mục, nhãn `simulated`, bằng chứng và đề xuất Go có điều kiện từ kết quả nhóm.
-- Điền báo cáo nhóm CP1–CP5 và báo cáo cá nhân. Phần duyệt chéo ghi chờ hội đồng; chưa có điểm hoặc quyết định chấm nhóm khác.
+- Triển khai và chạy phần A–B trên hai bộ trace của lab. Cả ba phép thử A1 đều đạt. Chi phí cơ sở là 4.472 đ/việc thành công (simulated) và giới hạn hai lần chạy cho tổng chi phí hệ thống thấp nhất trong ba kịch bản B3.
+- Đối chiếu kết quả D1 trong script với kế hoạch pilot. Với 20 nhân viên mỗi nhóm, mức chênh tối thiểu 5 điểm cần khoảng 1.250 quan sát hiệu dụng mỗi nhóm, vượt mức trần 1.000. Mức chênh 6 điểm cần 859 quan sát hiệu dụng và ít nhất 299 yêu cầu mỗi nhân viên theo giả định của kế hoạch.
+- Ghi hai rủi ro kinh tế từ B1 và B4, tổng hợp báo cáo nhóm và hồ sơ Gate 2a từ các kết quả A–E.
 
 ### Bằng chứng
 
-- [Bảng lỗi](report/team/bang_loi.md)
-- [Hồ sơ launch v0](report/team/ho_so_launch_v0.md)
-- [Báo cáo nhóm](report/team/group_report.md)
-- [Báo cáo cá nhân Vũ Quang Thái](report/team/2A202603545_VuQuangThai.md)
+- [Code và kết quả A–B](src/lab13.py), [bảng chi phí và độ nhạy](report/team/bang_chi_phi.md)
+- [Kế hoạch pilot](report/team/pilot_plan.yaml), [rủi ro kinh tế](report/team/chi_so.md#e2--rủi-ro-kinh-tế)
+- [Báo cáo cá nhân](report/team/2A202603547_PhanTrongHau.md), [báo cáo nhóm](report/team/group_report.md), [hồ sơ Gate 2a](report/team/ho_so_launch_v0.md)
+
+## HoVaTen-MSSV
+
+### Phần việc phụ trách
+
+-
+
+### Đóng góp cụ thể
+
+-
+
+### Bằng chứng
+
+-

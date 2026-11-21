@@ -13,7 +13,7 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Phan Trọng Hâu | 2A202603547 | | [Phan-Trong-Hau](https://github.com/Phan-Trong-Hau) | Viết code trước giải lao, kiểm số sau giải lao |
 |   2 | Ngô Đức Thịnh | 2A202603548 | | [NgooThinh05](https://github.com/NgooThinh05) | Kiểm số trước giải lao, viết code sau giải lao |
-|   3 | Bùi Gia Huy | 2A202603525 | | [huy9ai](https://github.com/huy9ai) | Gắn nhãn 1, phụ trách chỉ số |
+|   3 | Bùi Gia Huy | 2A202603525 | 26ai.huybg2@vinuni.edu.vn | [huy9ai](https://github.com/huy9ai) | Gắn nhãn 1, phụ trách chỉ số |
 |   4 | Vũ Quang Thái | 2A202603545 | | [vuThai05](https://github.com/vuThai05) | Gắn nhãn 2, kiêm giữ hồ sơ |
 
 ## Phân công theo checkpoint
@@ -39,6 +39,24 @@ report/team/MSSV_HoTen.md
 Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 Sao chép mục dưới đây cho từng thành viên.
+
+## BuiGiaHuy-2A202603525
+
+### Phần việc phụ trách
+
+- CP3 (Nhiệm vụ C): Người gắn nhãn 1 cho 20 ca lỗi theo Google PAIR, tổng hợp kết quả đối chiếu với Vũ Quang Thái, tính tỉ lệ đồng thuận và hoàn thiện bảng khắc phục 5 ca (`report/team/bang_loi.md`).
+- CP5 (Nhiệm vụ E1): Tính thử 3 chỉ số từ `src/logix_requests.csv`, đề xuất thêm 2 chỉ số, thiết kế danh sách event có `trace_id` và kiểm tra chéo (`report/team/chi_so.md`).
+
+### Đóng góp cụ thể
+
+- Gắn nhãn độc lập 20 ca lỗi, đối chiếu với Vũ Quang Thái đạt đồng thuận 19/20 (95%), thống nhất quy tắc phân biệt cho Ca 13 (Giới hạn hệ thống) và xây dựng bảng khắc phục 5 ca đủ 5 loại có cách phát hiện đo được và 1 vai trò phụ trách.
+- Tính 3 chỉ số thử nghiệm (`82,83%`, `27,12%`, `4,25%`), đề xuất 2 chỉ số mới (tỉ lệ mở gợi ý, tỉ lệ sai tiền qua kiểm tra mẫu), xây dựng 11 event gắn `trace_id` và ánh xạ kiểm tra chéo đầy đủ.
+
+### Bằng chứng
+
+- `report/team/bang_loi.md`
+- `report/team/chi_so.md`
+- `report/team/2A202603525_BuiGiaHuy.md`
 
 ## HoVaTen-MSSV
 

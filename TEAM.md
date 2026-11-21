@@ -11,10 +11,10 @@
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 |        |      |       |        |         |
-|   2 |        |      |       |        |         |
-|   3 |        |      |       |        |         |
-|   4 |        |      |       |        |         |
+|   1 | Phan Trọng Hâu | 2A202603547 | | [Phan-Trong-Hau](https://github.com/Phan-Trong-Hau) | |
+|   2 | Ngô Đức Thịnh | 2A202603548 | | [NgooThinh05](https://github.com/NgooThinh05) | |
+|   3 | Bùi Gia Huy | 2A202603525 | | [huy9ai](https://github.com/huy9ai) | |
+|   4 | Vũ Quang Thái | 2A202603545 | | [vuThai05](https://github.com/vuThai05) | |
 
 Bốn vai của lab:
 

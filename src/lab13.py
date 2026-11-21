@@ -4,6 +4,7 @@ Không cần khoá API. Điền các chỗ ghi VIẾT Ở ĐÂY (đánh dấu TO
 Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
+from statistics import NormalDist
 import pandas as pd
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
@@ -72,6 +73,27 @@ def mo_hinh(runs, reqs, gia_vao=26, gia_ra=130, gia_tool=15, luong_phut=2000,
     return dict(token=token, tool=tool, chay_lai=tien_chay_lai, xem_lai=xem_lai,
                 lam_lai=lam_lai, tong=tong, thanh_cong=thanh_cong,
                 cps=tong / thanh_cong if thanh_cong else math.inf)
+
+
+def co_mau(p1, p2, alpha=0.05, power=0.8):
+    """Cỡ mẫu mỗi nhóm theo công thức z so sánh hai tỉ lệ của lab."""
+    p_tb = (p1 + p2) / 2
+    z_alpha = NormalDist().inv_cdf(1 - alpha / 2)
+    z_power = NormalDist().inv_cdf(power)
+    return math.ceil((z_alpha * math.sqrt(2 * p_tb * (1 - p_tb))
+                      + z_power * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))) ** 2
+                     / (p2 - p1) ** 2)
+
+
+def tinh_chi_so(reqs):
+    """E1: trả về tử số, mẫu số và tỉ lệ; mẫu số rỗng trả None."""
+    xem = reqs[reqs.duoc_xem_lai == 1]
+    so_dem = {
+        'chinh': (int(((reqs.dong_trong_24h == 1) & (reqs.mo_lai_trong_7_ngay == 0)).sum()), len(reqs)),
+        'bo_qua': (int(xem.quyet_dinh_xem_lai.isin(['sua', 'bo']).sum()), len(xem)),
+        'mo_lai': (int((reqs.mo_lai_trong_7_ngay == 1).sum()), len(reqs)),
+    }
+    return {ten: (tu, mau, tu / mau if mau else None) for ten, (tu, mau) in so_dem.items()}
 
 
 if __name__ == '__main__':
@@ -157,6 +179,21 @@ if __name__ == '__main__':
     print(f'D1 · a) theo yêu cầu (MDE 5đ): {n5:,}/nhóm | b) m=75: DE={de_75:.2f}, n={n_75:,} ({math.ceil(n_75/75)} người/nhóm)')
     print(f'D1 · c) 20 người/nhóm: tối đa {int(20/icc):,} | d) 6 depot/nhóm: tối đa {int(6/icc)} | '
           f'e) MDE 6đ (859/nhóm): m >= {m_e} (DE={de_e:.2f}), power nếu chênh 5đ: {power_5pt:.2f}')
+    n5_z = co_mau(0.70, 0.75)
+    print(f'D1 · Đối chiếu công thức z: a) {n5_z:,}/nhóm; '
+          f'b) {math.ceil(n5_z * de_75):,}/nhóm, {math.ceil(n5_z * de_75 / 75)} người/nhóm; '
+          f'e) {co_mau(0.70, 0.76):,}/nhóm (statsmodels: {n6:,})')
+    print(f'D1e · Mẫu thô {20 * m_e:,}/nhóm; hiệu dụng {20 * m_e / de_e:.3f}; '
+          f'nếu chỉ {m_e - 1} yêu cầu/người: {20 * (m_e - 1) / (1 + (m_e - 2) * icc):.3f} < 859')
     print(f"D3 · mo_lai_trong_7_ngay toàn mẫu: {reqs.mo_lai_trong_7_ngay.mean():.2%} "
           f"({int(reqs.mo_lai_trong_7_ngay.sum())}/{len(reqs)}) | "
           f"phạm vi pilot: {pilot.mo_lai_trong_7_ngay.mean():.2%}")
+    print('E1 · Mọi dữ liệu đầu vào của lab là giả lập; phút và chi phí liên quan ghi simulated.')
+    for pham_vi, du_lieu in (('Toàn mẫu', reqs), ('noi_dia + hang_nang', pilot)):
+        for ten, (tu, mau, ty_le) in tinh_chi_so(du_lieu).items():
+            hien_thi = f'{ty_le:.2%}' if ty_le is not None else 'Chưa có dữ liệu'
+            print(f'E1 · {pham_vi} | {ten} | {tu}/{mau} | {hien_thi}')
+    xem_lai_toan_bo = mo_hinh(runs, reqs, he_so_xem_lai=2)['cps']
+    lam_lai_gap_doi = mo_hinh(runs, reqs, he_so_lam_lai=2)['cps']
+    print(f'E2 · Xem lại gấp đôi: {xem_lai_toan_bo:,.0f} đ/việc (simulated); '
+          f'làm lại gấp đôi: {lam_lai_gap_doi:,.0f} đ/việc (simulated)')

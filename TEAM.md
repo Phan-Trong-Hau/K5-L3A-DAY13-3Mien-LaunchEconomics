@@ -58,16 +58,22 @@ Sao chép mục dưới đây cho từng thành viên.
 - `report/team/chi_so.md`
 - `report/team/2A202603525_BuiGiaHuy.md`
 
-## HoVaTen-MSSV
+## VuQuangThai-2A202603545
 
 ### Phần việc phụ trách
 
--
+- CP3: người gắn nhãn 2; gắn độc lập 20 ca và đối chiếu với Huy sau khi hoàn thành bộ nhãn riêng.
+- CP1–CP5: giữ hồ sơ launch, tổng hợp kết quả, bằng chứng và trạng thái; tổng hợp báo cáo nhóm. Duyệt chéo và bàn giao Hậu push khi đủ đầu vào.
 
 ### Đóng góp cụ thể
 
--
+- Bộ nhãn người 2 đủ 20 ca; đồng thuận ban đầu 19/20 (95%); ca 13 thống nhất Giới hạn hệ thống theo nguyên nhân gốc.
+- Tổng hợp hồ sơ launch 7 mục, nhãn `simulated`, bằng chứng và đề xuất Go có điều kiện từ kết quả nhóm.
+- Điền báo cáo nhóm CP1–CP5 và báo cáo cá nhân. Phần duyệt chéo ghi chờ hội đồng; chưa có điểm hoặc quyết định chấm nhóm khác.
 
 ### Bằng chứng
 
--
+- [Bảng lỗi](report/team/bang_loi.md)
+- [Hồ sơ launch v0](report/team/ho_so_launch_v0.md)
+- [Báo cáo nhóm](report/team/group_report.md)
+- [Báo cáo cá nhân Vũ Quang Thái](report/team/2A202603545_VuQuangThai.md)

@@ -77,16 +77,41 @@ Sao chép mục dưới đây cho từng thành viên.
 - [Kế hoạch pilot](report/team/pilot_plan.yaml), [rủi ro kinh tế](report/team/chi_so.md#e2--rủi-ro-kinh-tế)
 - [Báo cáo cá nhân](report/team/2A202603547_PhanTrongHau.md), [báo cáo nhóm](report/team/group_report.md), [hồ sơ Gate 2a](report/team/ho_so_launch_v0.md)
 
-## HoVaTen-MSSV
+## NgoDucThinh-2A202603548
 
 ### Phần việc phụ trách
 
--
+- CP1–CP2: Kiểm số trước giải lao, đối chiếu kết quả A1–A4 và B1–B4, điền `report/team/bang_chi_phi.md`.
+- CP4: Viết code tính cỡ mẫu D1 và tỉ lệ `mo_lai_trong_7_ngay` trong `src/lab13.py`; hoàn thiện và cập nhật lịch lưu lượng trong `report/team/pilot_plan.yaml`.
 
 ### Đóng góp cụ thể
 
--
+- Tính tay và đối chiếu toàn bộ số liệu chi phí A1–A4, độ nhạy B1–B4 (chi phí 4.472 đ/việc thành công `simulated`, tổng hệ thống tối ưu 6.901.220 đ ở giới hạn 2 lần chạy, kịch bản xem lại 100% ở 11.743–12.415 đ/việc `simulated`) và điền `report/team/bang_chi_phi.md`.
+- Hoàn thiện phần D1 và D3 trong `src/lab13.py`, hoàn thiện `report/team/pilot_plan.yaml` (MDE 6 điểm, 20 nhân viên/nhóm, 299 yêu cầu/người, điều chỉnh giai đoạn phân tích chính lên 21 ngày kèm cổng kiểm tra lưu lượng thực tế theo nhân viên trước khi bật) và chạy kiểm tra lại code trên máy riêng.
 
 ### Bằng chứng
 
--
+- [Code CP4 và kiểm tra chạy lại](src/lab13.py)
+- [Bảng chi phí và độ nhạy](report/team/bang_chi_phi.md)
+- [Kế hoạch pilot](report/team/pilot_plan.yaml)
+- [Báo cáo cá nhân Ngô Đức Thịnh](report/team/2A202603548_NgoDucThinh.md)
+
+## VuQuangThai-2A202603545
+
+### Phần việc phụ trách
+
+- CP3: người gắn nhãn 2; gắn độc lập 20 ca và đối chiếu với Huy sau khi hoàn thành bộ nhãn riêng.
+- CP1–CP5: giữ hồ sơ launch, tổng hợp kết quả, bằng chứng và trạng thái; tổng hợp báo cáo nhóm. Duyệt chéo và bàn giao Hậu push khi đủ đầu vào.
+
+### Đóng góp cụ thể
+
+- Bộ nhãn người 2 đủ 20 ca; đồng thuận ban đầu 19/20 (95%); ca 13 thống nhất Giới hạn hệ thống theo nguyên nhân gốc.
+- Tổng hợp hồ sơ launch 7 mục, nhãn `simulated`, bằng chứng và đề xuất Go có điều kiện từ kết quả nhóm.
+- Điền báo cáo nhóm CP1–CP5 và báo cáo cá nhân. Phần duyệt chéo ghi chờ hội đồng; chưa có điểm hoặc quyết định chấm nhóm khác.
+
+### Bằng chứng
+
+- [Bảng lỗi](report/team/bang_loi.md)
+- [Hồ sơ launch v0](report/team/ho_so_launch_v0.md)
+- [Báo cáo nhóm](report/team/group_report.md)
+- [Báo cáo cá nhân Vũ Quang Thái](report/team/2A202603545_VuQuangThai.md)

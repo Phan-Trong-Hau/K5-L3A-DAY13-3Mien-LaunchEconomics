@@ -1,6 +1,20 @@
 # Bảng lỗi và cách khắc phục · Nhiệm vụ C
 
-20 ca lỗi nằm trong `docs/Ngay13_Lab13_De_bai_hoc_vien.docx`. Năm loại theo Google PAIR: **Do người dùng · Hệ thống · Ngữ cảnh · Giới hạn hệ thống · Ngầm**. Gắn nhãn theo nguyên nhân gốc, không theo chỗ cần sửa.
+**Trạng thái: nhóm đã xác nhận đồng thuận; đã điền Nhãn người 2 theo xác nhận của thành viên.** Chờ nhập bộ nhãn người 1 để ghi kết quả đối chiếu và tỉ lệ đồng thuận. Phân loại bên dưới đối chiếu với hướng dẫn của lab; các ngưỡng phát hiện là đề xuất cho pilot, chưa phải kết quả đo.
+
+Nguồn: [20 ca lỗi trong đề bài](../../docs/Ngay13_Lab13_De_bai_hoc_vien.docx), mục “Hai mươi ca lỗi”; [hướng dẫn nhiệm vụ C và nhãn tham khảo](../../docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md#nhiệm-vụ-c--bảng-lỗi-và-cách-khắc-phục-30-phút); [quy tắc gắn nhãn độc lập](../../RULES.md#làm-bài-và-liêm-chính).
+
+## Định nghĩa và cách chọn nhãn
+
+Gắn nhãn theo nguyên nhân gốc, không theo chỗ cần sửa. Với bài lab này, lỗi chỉ lộ qua hậu kiểm được xếp **Ngầm**, dù nguyên nhân kỹ thuật có thể là lỗi hệ thống.
+
+| Loại | Dấu hiệu phân biệt |
+| --- | --- |
+| Do người dùng | Khách nhập sai, chọn sai hoặc xác nhận nhầm; thiếu kiểm tra đầu vào là vấn đề cần khắc phục. |
+| Hệ thống | Trợ lý làm sai thiết kế hoặc chính sách; sai sót đã lộ qua phản hồi, đầu ra hoặc bước xem lại. |
+| Ngữ cảnh | Trợ lý làm đúng thiết kế/chính sách nhưng giả định về kỳ vọng, cách hiểu hoặc hoàn cảnh của khách không phù hợp. |
+| Giới hạn hệ thống | Thiếu dữ liệu, ngoài phạm vi hoặc đầu vào chưa được hỗ trợ khiến trợ lý không thể xử lý. |
+| Ngầm | Có sai sót về kết quả, chi phí hoặc dữ liệu nhưng khách và hệ thống không nhận ra trong luồng xử lý; chỉ lộ qua hậu kiểm. |
 
 ## Hai bộ nhãn độc lập
 
@@ -45,7 +59,7 @@ Người gắn nhãn 1: **Bùi Gia Huy** · Người gắn nhãn 2: **Vũ Quang 
 
 ## Bảng khắc phục cho 5 ca, mỗi loại một ca
 
-Cách phát hiện phải đo được (event, ngưỡng, tần suất). Người phụ trách là một vai trò, không ghi "cả đội".
+Cách phát hiện dưới đây là **đề xuất**: mỗi dòng có event, ngưỡng kích hoạt và tần suất kiểm tra; ngưỡng chưa được kiểm chứng bằng dữ liệu pilot. Event cần ghi `trace_id`, `request_id`, thời điểm và trường liên quan để nối từ phát hiện tới xử lý. Vai trò phụ trách là đề xuất phân công, chờ nhóm xác nhận người đảm nhiệm.
 
 | Ca | Loại lỗi | Phát hiện bằng gì | Khắc phục thế nào | Ai phụ trách |
 | --: | --- | --- | --- | --- |

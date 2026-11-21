@@ -1,56 +1,109 @@
-# Lab 13 · Nhiệm vụ D · Kế hoạch pilot trợ lý hoàn phí LogiX-VN (Gate 2a)
-# Điền mọi chỗ có dấu hỏi. Khi nộp, ngoài các dòng chú thích không còn dấu hỏi nào.
-# Kiểm tra đọc được: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml'))"
+# Lab 13 · CP4 · Kế hoạch pilot trợ lý hoàn phí LogiX-VN · Gate 2a
+# Bản kế hoạch đề xuất; chưa có pilot hoặc phân nhóm thật được thực hiện.
+# Nguồn tính: cd src; python -X utf8 lab13.py. Toàn bộ dữ liệu lab là giả lập.
 #
-# D1 · Cỡ mẫu (baseline 0,70; mục tiêu +5 điểm; alpha 0,05; power 0,8; ICC 0,02)
-#   a) Chia theo yêu cầu: 1.250 yêu cầu mỗi nhóm (statsmodels NormalIndPower; công thức z chính xác là 1.251)
-#   b) Theo nhân viên, m = 75: DE = 1 + 74 × 0,02 = 2,48; n = 3.100 mỗi nhóm -> cần 42 nhân viên/nhóm (84 > 40, không đủ người)
-#   c) 20 nhân viên mỗi nhóm: giới hạn hiệu dụng c / ICC = 20 / 0,02 = tối đa 1.000 < 1.250 (không đạt MDE 5 điểm)
-#   d) 6 depot mỗi nhóm: giới hạn hiệu dụng 6 / 0,02 = tối đa 300 (không đạt)
-#   e) Mức chênh 6 điểm (859 mỗi nhóm), 20 nhân viên mỗi nhóm: cần m >= 299 yêu cầu mỗi nhân viên (DE = 6,96)
+# D1 · baseline 0,70; alpha 0,05; power 0,80; ICC 0,02
+# a) MDE 5 điểm: statsmodels NormalIndPower = 1.250 yêu cầu/nhóm;
+#    công thức z của đề = 1.251/nhóm (khác phương pháp xấp xỉ, dưới 0,1%).
+# b) m=75: DE=1+74*0,02=2,48; statsmodels: ceil(1.250*2,48)=3.100/nhóm;
+#    công thức z: ceil(1.251*2,48)=3.103/nhóm; đều cần 42 người/nhóm, 84 > 40.
+# c) 20 nhân viên/nhóm: n hiệu dụng < 20/0,02=1.000, không đạt 1.250.
+# d) 6 depot/nhóm: n hiệu dụng < 6/0,02=300; không đạt, chỉ có 6 cụm/nhóm.
+# e) MDE 6 điểm: dùng mức bảo thủ 859/nhóm theo đề (statsmodels=858).
+#    20m/(0,98+0,02m)>=859 => m>=298,518 => lấy 299 yêu cầu/nhân viên.
+#    DE=6,96; mẫu thô=5.980/nhóm; hiệu dụng=859,195/nhóm.
+#    m=298 chỉ cho 858,790, chưa đạt. Tổng cần 11.960 yêu cầu đủ thời gian theo dõi.
+#    Lưu lượng: toàn công ty ước 1.500 yêu cầu/ngày × 982/1.200 (81,83% phạm vi) ≈ 1.228 yêu cầu
+#    đủ điều kiện/ngày (~30,7/người/ngày nếu chia đều 40 người), nhưng mẫu CSV cho thấy tải lệch
+#    giữa các nhân viên (39–73 yêu cầu/người) và chưa có log lưu lượng thật theo ngày/nhân viên.
+#    Lịch 14 ngày đòi ~854 yêu cầu/ngày (~21,4/người/ngày lịch), quá sát khi tính nghỉ ca và dịp lễ;
+#    điều chỉnh giai đoạn phân tích chính lên 21 ngày (~570 yêu cầu/ngày, ~14,2/người/ngày lịch)
+#    và bắt buộc kiểm tra lưu lượng thực tế theo nhân viên trước khi duyệt bật.
 #
-# D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (mỗi câu một dòng):
-#   1. Đối chứng chạy cùng thời gian: Có, 20 nhân viên đối chứng làm cùng tuần và cùng 12 depot với 20 nhân viên dùng trợ lý.
-#   2. Chia ngẫu nhiên hay do người chọn: Chia ngẫu nhiên bằng code với seed ghi trước, phân tầng theo depot.
-#   3. Ảnh hưởng gián tiếp và cách giảm: Có rủi ro chia sẻ câu trả lời trong depot; giảm bằng phân quyền theo tài khoản và log lượt mở trợ lý theo staff_id.
-#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước: Có, đã chốt trước ngày bắt đầu trong tài liệu này.
-#   5. Ít nhất 20 cụm mỗi nhóm: Có, đúng 20 nhân viên (cụm) mỗi nhóm.
+# D2 · Năm câu kiểm tra cho thiết kế đề xuất
+# 1. Có đối chứng đồng thời: 20 nhân viên mỗi nhóm trong cùng giai đoạn đánh giá.
+# 2. Dự kiến chia ngẫu nhiên 20/20 với seed=20261121, chặn theo depot và tải công việc;
+#    lưu roster, seed và kết quả trước khi cấp quyền; chưa chạy phân nhóm thật.
+# 3. Có nguy cơ chia sẻ gợi ý; phân quyền theo staff_id, hướng dẫn không chia sẻ,
+#    ghi log truy cập và giữ phân tích theo nhóm được phân ban đầu.
+# 4. Chỉ số, cỡ mẫu, luật dừng và lịch quyết định ghi trước trong kế hoạch này;
+#    Giám đốc vận hành cần ký duyệt trước ngày 2026-11-30.
+# 5. Có 20 cụm nhân viên/nhóm nếu huy động đủ 40 người; phải kiểm tra roster thật.
+#    CSV chỉ chứa 20 nhân viên tại 6 depot, không chứng minh đã sẵn 40 người/12 depot.
 #
-# Đánh đổi đã chấp nhận (nếu cách chia chưa đạt cả hai điều kiện):
-#   Chấp nhận tăng MDE từ 5 điểm lên 6 điểm (n = 859/nhóm, m >= 299/người); nếu tác động thật chỉ đạt 5 điểm thì power giảm còn khoảng 0,64.
+# Đánh đổi: thiết kế có power khoảng 0,80 cho chênh 6 điểm, chỉ khoảng 0,64 cho 5 điểm.
+# Mục tiêu kinh doanh tăng ít nhất 5 điểm vẫn giữ; không phát hiện khác biệt không đồng nghĩa không có tác động.
 #
-# Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn:
-#   Hiện tại là 4,25% toàn mẫu (51/1.200) và 3,97% trong phạm vi noi_dia + hang_nang; chọn ngưỡng so với đối chứng (+2 điểm) kèm trần tuyệt đối 6%.
+# D3 · Mở lại 7 ngày: toàn mẫu 51/1.200=4,25%; phạm vi pilot 39/982=3,97%.
+# Ngưỡng 3% sẽ vi phạm ngay trên mẫu hiện tại; ngưỡng 6% và chênh đối chứng +2 điểm
+# chưa thể kết luận vi phạm từ dữ liệu này vì chưa có đối chứng đồng thời.
 
 pilot:
   owner: "Giám đốc vận hành LogiX-VN"
-  scope: "Chỉ noi_dia và hang_nang tại cả 12 depot (0,22× và 0,69× so với 12.000 đ, simulated); loại quoc_te (1,88×) và doi_tac (0,85×)"
+  scope: "noi_dia và hang_nang tại 12 depot nếu đủ roster; chi phí A3 lần lượt 2.696 đ và 8.221 đ/việc (simulated). Loại quoc_te (22.515 đ, simulated) và doi_tac (10.215 đ, simulated) do chi phí hoặc điều khoản riêng."
   assignment:
     unit: "staff"
     control_share: 0.5
     randomized: true
-  rollout: [0.10, 0.25, 0.50]     # 4 -> 10 -> 20 nhân viên, mỗi bước một tuần; đo chỉ số chính từ bước 0.50
+    random_seed: 20261121
+    procedure: "Chốt roster 40 nhân viên tại 12 depot, kiểm tra log lưu lượng thực tế 4 tuần gần nhất theo từng staff_id cho phạm vi noi_dia + hang_nang, chặn theo depot/tải công việc và chia ngẫu nhiên 20/20; lưu danh sách và kết quả kiểm tra lưu lượng trước cấp quyền. Không tự suy roster hoặc lưu lượng/ngày từ 20 người trong CSV."
+    treatment_staff: 20
+    control_staff: 20
+  rollout: [0.10, 0.25, 0.50]
+  schedule:
+    status: "Lịch đề xuất, chưa thực hiện; bước ramp tối thiểu 2 tuần để có dữ liệu an toàn trễ, giai đoạn phân tích chính 21 ngày để tạo vùng đệm lưu lượng theo nhân viên."
+    readiness_review: "2026-11-29"
+    volume_verification: "Trước khi duyệt bật ngày 2026-11-29, Giám đốc vận hành trích xuất lưu lượng thực tế 4 tuần gần nhất theo từng nhân viên (noi_dia + hang_nang) của đủ 40 người tại 12 depot. Cần đạt >=570 yêu cầu đủ điều kiện/ngày trên cả 2 nhóm và mức trung bình >=14,2 yêu cầu/nhân viên/ngày lịch (kiểm tra cả nhân viên tải thấp/p10 và lịch nghỉ ca dịp lễ để đảm bảo đạt >=299 yêu cầu/người trong 21 ngày). Nếu lưu lượng thực tế không đủ, bắt buộc chốt kéo dài giai đoạn 50% (ví dụ lên 28 ngày) và cập nhật lại decision_date trước 2026-11-30 rồi mới bật; không bật khi chưa chứng minh đủ lưu lượng."
+    stage_10_percent: "2026-11-30 đến 2026-12-13 (14 ngày): bật 4/40 người thuộc nhóm can thiệp"
+    stage_25_percent: "2026-12-14 đến 2026-12-27 (14 ngày): bật 10/40 người thuộc cùng nhóm can thiệp"
+    stage_50_percent: "2026-12-28 đến 2027-01-17 (21 ngày): bật đủ 20/40; chỉ cohort giai đoạn này vào phân tích chính (cần 5.980 yêu cầu/nhóm ≈ 570 yêu cầu đủ điều kiện/ngày trên cả 2 nhóm)"
+    follow_up_until: "2027-01-25T23:59:59+07:00"
+    data_freeze: "2027-01-26T00:00:00+07:00"
+    gate: "Chỉ tăng bước khi không có lỗi nghiêm trọng/cảnh báo chưa xử lý, hậu kiểm sai tiền không vượt 1%, có ít nhất 100 yêu cầu an toàn đã trưởng thành ở mỗi nhóm, và 3 lần kiểm tra hằng ngày liên tiếp có mở lại <=6% và chênh đối chứng <2 điểm. Thiếu dữ liệu hoặc vi phạm ngay lần đầu thì giữ bước; không coi chưa mở lại là an toàn."
   primary_metric:
     name: dong_trong_24h_khong_mo_lai_7_ngay
     baseline: 0.70
+    business_minimum_uplift: 0.05
     mde: 0.06
     alpha: 0.05
     power: 0.80
     n_per_arm: 859
     design_effect: 6.96
     clusters_per_arm: 20
+    requests_per_cluster: 299
+    raw_n_per_arm: 5980
+    effective_n_per_arm: 859.1954022988506
+    denominator: "Toàn bộ yêu cầu trong phạm vi giao cho mỗi nhóm ở giai đoạn bật đủ 20 người, kể cả không mở gợi ý, chuyển nhân viên hoặc thất bại. Mỗi nhân viên cần ít nhất 299 yêu cầu đủ thời gian theo dõi."
+    maturity: "Đóng trong 24h từ lúc tạo và không mở lại trong 7 ngày sau lần đóng đầu. Đợi đủ 8 ngày từ lúc tạo để chốt cohort; yêu cầu không đóng trong 24h tính không đạt. Quy ước pilot này cần đối chiếu với cách tạo cột CSV trước khi so lịch sử."
   identifiability:
-    concurrent_control: "20 nhân viên đối chứng chạy song song cùng thời gian tại cùng 12 depot"
-    spillover_risk: "Nhân viên cùng depot có thể trao đổi gợi ý; giảm bằng cấp quyền theo staff_id và ghi log truy cập trợ lý"
-    predeclared: "Chỉ số chính, cỡ mẫu, luật dừng và ngày quyết định 2027-01-05 chốt trước khi chạy"
+    concurrent_control: "20 nhân viên đối chứng làm thủ công, nhận yêu cầu cùng thời gian và cùng phạm vi với 20 nhân viên can thiệp; giữ quyền truy cập cố định."
+    spillover_risk: "Người cùng depot có thể chia sẻ gợi ý; phân quyền theo staff_id, ghi log truy cập, ghi nhận điều chuyển và chia sẻ. Không chuyển người hoặc đổi arm sau khi thấy kết quả."
+    predeclared: "Duyệt kế hoạch, kiểm tra lưu lượng thực tế theo nhân viên, chốt thời lượng giai đoạn chính và lưu roster trước 2026-11-30. Lịch cuối 2027-01-26 (hoặc mốc đã khóa lại trước khi bật nếu phải kéo dài theo lưu lượng thực tế); nếu chưa đủ mẫu/thời gian theo dõi thì kết luận chưa đủ bằng chứng, không tự kéo dài sau khi xem hiệu quả."
+  analysis:
+    method: "Phân tích theo nhóm phân ngẫu nhiên ban đầu (ITT), ước lượng chênh lệch tỉ lệ và khoảng tin cậy 95% có điều chỉnh cụm nhân viên, có xét tầng depot; không coi 5.980 yêu cầu là độc lập."
+    assumptions: "DE=6,96 giả định ICC=0,02 và 299 yêu cầu/cụm gần cân bằng; nếu tải lệch nhiều, mất cụm hoặc ICC cao hơn phải đánh giá lại cỡ mẫu, không dùng mặc định 859."
+    decision: "Chỉ cân nhắc mở rộng khi cận dưới khoảng tin cậy 95% của chênh lệch >=5 điểm, chi phí tổng gồm cố định <12.000 đ/việc và đạt an toàn. Cỡ mẫu kiểm định chênh 0 so với 6 điểm không bảo đảm chứng minh tác động ít nhất 5 điểm; nếu chưa đạt thì chưa mở rộng và lập nghiên cứu tiếp theo."
+  safety_measurement:
+    cohort: "Ở mỗi bước ramp, nhóm trợ lý chỉ gồm yêu cầu giao cho các nhân viên đã bật cờ trong khoảng đang bật, kể cả họ không mở gợi ý; không gộp người chưa bật để tránh pha loãng rủi ro. Đối chứng là yêu cầu cùng phạm vi và khoảng thời gian ở 20 người đối chứng. Phân tích chính giai đoạn 3 vẫn theo ITT 20/20."
+    reopen_rate: "Số yêu cầu mở lại trong 7 ngày sau lần đóng đầu / số yêu cầu đã đủ 7 ngày theo dõi sau lần đóng đầu, khử trùng theo request_id; không dùng tất cả yêu cầu vừa tạo làm mẫu số."
+    pending: "Báo riêng số yêu cầu chưa đóng và đã đóng nhưng chưa đủ 7 ngày. Ca đóng trễ ngày 4 phải theo dõi đến ngày 11; không ép trưởng thành ở ngày 8. Ca quá 24h chưa đóng hoặc ca đóng trễ còn thiếu theo dõi phải được CSKH xử lý và hoàn tất cửa sổ theo dõi trước khi xác nhận an toàn để tăng bước/mở rộng."
+    final_cutoff: "Ngày 26/01/2027 chỉ chốt kết luận an toàn nếu đã đủ theo dõi các ca đóng trễ trong cohort đánh giá; còn thiếu thì kết luận chưa đủ bằng chứng và chưa mở rộng, không tự gán đạt hoặc kéo dài để tìm kết quả thuận lợi."
   stop_rules:
-    - "NẾU tỉ lệ mo_lai_trong_7_ngay của nhóm trợ lý cao hơn đối chứng từ 2 điểm phần trăm trở lên hoặc vượt 6%, hoặc có từ 1 ca hoàn trùng trở lên TRONG 3 ngày liên tiếp THÌ Giám đốc vận hành tắt trợ lý trong 30 phút KHÔNG THÌ không được chuyển sang bước rollout tiếp theo"
-    - "NẾU chi phí mỗi việc thành công vượt 8.000 đ (simulated) TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp phạm vi về chỉ noi_dia và giới hạn tối đa 2 lần chạy KHÔNG THÌ không được mở rộng thêm hang_nang"
-    - "NẾU tỉ lệ bỏ qua gợi ý (sua + bo) vượt 40% TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên và rà soát quy trình trong 3 ngày KHÔNG THÌ không được chuyển sang bước rollout tiếp theo"
-  interim_looks: "chỉ kiểm tra chỉ số an toàn"
-  rollback: "Giám đốc vận hành bấm cờ tắt, hiệu lực trong 30 phút; khách hàng được phục vụ bằng luồng nhân viên tự làm"
-  decision_date: "2027-01-05"
+    - "NẾU có từ 1 ca hoàn trùng hoặc tin đã hoàn không có ghi sổ ok TRONG bất kỳ thời điểm nào THÌ Giám đốc vận hành tắt trợ lý trong 30 phút, chuyển nhân viên đối soát KHÔNG THÌ không được tiếp tục tự động hoàn tiền khi sự cố chưa được xử lý."
+    - "NẾU tỉ lệ mở lại 7 ngày của cohort nhân viên đã bật cờ vượt 6% hoặc cao hơn đối chứng từ 2 điểm phần trăm, chỉ xét yêu cầu đã đủ 7 ngày sau đóng và ít nhất 100 yêu cầu/nhóm TRONG 3 lần kiểm tra hằng ngày liên tiếp THÌ Giám đốc vận hành tắt trợ lý trong 30 phút và giao CSKH rà nguyên nhân KHÔNG THÌ không được tăng bước ngay từ lần vi phạm đầu hoặc khi chưa đủ dữ liệu/chưa xử lý cảnh báo."
+    - "NẾU chi phí biến đổi mỗi việc thành công của cohort trưởng thành vượt 8.000 đ/việc, dùng phút làm việc đo thật TRONG 2 cohort tuần liên tiếp THÌ PM trợ lý hoàn phí tạm dừng mở rộng, đề xuất thu hẹp về noi_dia và tối đa 2 lần chạy trong 1 ngày KHÔNG THÌ không được mở rộng hang_nang; thay phạm vi phải lập phiên đánh giá mới, không gộp với cohort chính cũ."
+    - "NẾU tỉ lệ sua hoặc bo trên số yêu cầu đã xem lại vượt 40% TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên và rà quy trình trong 3 ngày KHÔNG THÌ không được tăng bước khi chưa hoàn tất xử lý."
+  cost_measurement:
+    variable_cost: "Cộng token và tool của mọi lần chạy, kể cả lỗi, với phút xem lại/làm lại đo thật x 2.000 đ; chia số việc thanh_cong của cùng cohort. Thành công bằng 0 thì báo không tính được và giữ bước."
+    full_cost: "Báo riêng chi phí chuyển sang thủ công, chi phí cố định 40 triệu đ/tháng phân bổ theo thời gian pilot và chi phí tổng/việc; trần 8.000 chỉ là chi phí biến đổi, không thay so sánh tổng với 12.000 đ."
+    review_policy: "Ban đầu xem lại 100%; chỉ thử giảm theo bậc với duyệt của CSKH và kế toán sau khi hậu kiểm sai tiền <=1% và không có sự cố nghiêm trọng; không mặc định toàn bộ hang_nang được miễn xem lại."
+  interim_looks: "Chỉ kiểm tra an toàn và vận hành theo luật dừng; không xem chênh lệch chỉ số chính để dừng sớm vì hiệu quả."
+  rollback: "Giám đốc vận hành tắt cờ trong 30 phút; Kỹ sư trưởng agent kiểm tra hàng đợi và trạng thái ghi sổ trước thử lại; khách được nhân viên phục vụ. Chỉ bật lại sau khi nguyên nhân được sửa và Giám đốc vận hành duyệt."
+  decision_date: "2027-01-26"
   simulated_inputs:
-    - "phut_xem_lai_simulated và phut_lam_lai_simulated từ logix_requests.csv"
-    - "chi phí mỗi việc thành công A3 (simulated): noi_dia 2.696 đ (0,22×), hang_nang 8.221 đ (0,69×), quoc_te 22.515 đ (1,88×), doi_tac 10.215 đ (0,85×)"
-    - "ngưỡng dừng chi phí 8.000 đ/việc (simulated)"
+    - "Toàn bộ logix_runs.csv và logix_requests.csv là dữ liệu giả lập của lab; baseline 0,70 và ICC 0,02 là giả định."
+    - "phut_xem_lai_simulated và phut_lam_lai_simulated; không dùng thay phút đo thật để kết luận pilot."
+    - "A3 simulated: noi_dia 2.696 đ; hang_nang 8.221 đ; quoc_te 22.515 đ; doi_tac 10.215 đ/việc."
+    - "B1 simulated: xem lại gấp đôi 6.292 đ/việc; làm lại gấp đôi 6.787 đ/việc."
+    - "B4 simulated: xem lại 100% giá 11.743 đ/việc ở 9 phút làm lại hoặc 12.415 đ/việc ở 15,3 phút làm lại."
+    - "Ngưỡng 8.000 đ, 6%, +2 điểm, 40%, mẫu hậu kiểm 100 đơn/tuần và lịch là lựa chọn đề xuất, chưa được kiểm chứng."

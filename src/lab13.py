@@ -141,6 +141,22 @@ if __name__ == '__main__':
         phut_hoa_von = (BASELINE * kq_pilot['thanh_cong'] - chi_phi_khac) / (so_xem_lai * LUONG_PHUT)
         print(f'{phut_lam_lai:g} phút làm lại/ca | {cps:,.0f} đ/việc (simulated) | '
               f'{cps / BASELINE:.2f}× | hòa vốn ở {phut_hoa_von:.2f} phút xem lại')
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    # Nhiệm vụ D · Cỡ mẫu và tỉ lệ mở lại 7 ngày (CP4)
+    from statsmodels.stats.proportion import proportion_effectsize
+    from statsmodels.stats.power import NormalIndPower
+
+    power_calc = NormalIndPower()
+    n5 = math.ceil(power_calc.solve_power(effect_size=proportion_effectsize(0.70, 0.75), power=0.80, alpha=0.05))
+    n6 = math.ceil(power_calc.solve_power(effect_size=proportion_effectsize(0.70, 0.76), power=0.80, alpha=0.05))
+    power_5pt = power_calc.solve_power(effect_size=proportion_effectsize(0.70, 0.75), nobs1=859, alpha=0.05)
+    icc = 0.02
+    de_75 = 1 + (75 - 1) * icc
+    n_75 = math.ceil(n5 * de_75)
+    m_e = math.ceil(0.98 * 859 / (20 - 0.02 * 859))
+    de_e = 1 + (m_e - 1) * icc
+    print(f'D1 · a) theo yêu cầu (MDE 5đ): {n5:,}/nhóm | b) m=75: DE={de_75:.2f}, n={n_75:,} ({math.ceil(n_75/75)} người/nhóm)')
+    print(f'D1 · c) 20 người/nhóm: tối đa {int(20/icc):,} | d) 6 depot/nhóm: tối đa {int(6/icc)} | '
+          f'e) MDE 6đ (859/nhóm): m >= {m_e} (DE={de_e:.2f}), power nếu chênh 5đ: {power_5pt:.2f}')
+    print(f"D3 · mo_lai_trong_7_ngay toàn mẫu: {reqs.mo_lai_trong_7_ngay.mean():.2%} "
+          f"({int(reqs.mo_lai_trong_7_ngay.sum())}/{len(reqs)}) | "
+          f"phạm vi pilot: {pilot.mo_lai_trong_7_ngay.mean():.2%}")

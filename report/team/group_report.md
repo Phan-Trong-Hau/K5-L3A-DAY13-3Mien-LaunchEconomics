@@ -11,19 +11,20 @@ Nhóm đánh giá chi phí và rủi ro của trợ lý hoàn phí LogiX-VN đ�
 
 ## 3. Giải pháp
 
-| Nhiệm vụ | Cách làm và bằng chứng |
-| --- | --- |
-| A · Chi phí | Cộng token và tool trên mọi lần chạy, kể cả lần lỗi, rồi cộng chi phí xem lại và làm lại trước khi chia cho số yêu cầu thành công. Tách theo loại yêu cầu và tính thêm chi phí cố định cho phạm vi pilot. [Bảng chi phí](bang_chi_phi.md) |
-| B · Độ nhạy | Đổi từng đầu vào, thử kịch bản kết hợp và tính cả chi phí nhân viên xử lý thay ở giới hạn 1–3 lần chạy. [Bảng độ nhạy](bang_chi_phi.md#b1--đổi-từng-yếu-tố) |
-| C · Bảng lỗi | Hai người gắn nhãn độc lập 20 ca, xử lý ca lệch nhãn và đề xuất cách phát hiện, khắc phục cho năm loại lỗi. [Bảng lỗi](bang_loi.md) |
-| D · Pilot | Chia ngẫu nhiên theo nhân viên, phân tầng theo depot, dùng đối chứng đồng thời và đặt trước ba luật dừng. [Kế hoạch pilot](pilot_plan.yaml) |
-| E · Chỉ số và rủi ro | Tính thử ba chỉ số, đặc tả các event có `trace_id` và đưa kết quả độ nhạy vào quyết định pilot. [Chỉ số và rủi ro](chi_so.md) · [Hồ sơ launch v0](ho_so_launch_v0.md) |
+- **A–B:** lập mô hình chi phí, tách loại yêu cầu, tính cố định và độ nhạy; xem [bảng chi phí](bang_chi_phi.md), [code](../../src/lab13.py).
+- **C:** Huy và Thái gắn nhãn độc lập 20 ca, đối chiếu và thống nhất ca lệch; lập cách phát hiện, khắc phục cho 5 loại lỗi trong [bảng lỗi](bang_loi.md).
+- **D:** đề xuất chia ngẫu nhiên theo nhân viên, có đối chứng, cỡ mẫu, kiểm tra lưu lượng theo nhân viên và 4 luật dừng trong [pilot plan](pilot_plan.yaml).
+- **E:** đặc tả chỉ số, event có `trace_id` và rủi ro kinh tế trong [chỉ số](chi_so.md); tổng hợp 7 mục, trạng thái, vai trò và đề xuất trong [hồ sơ launch](ho_so_launch_v0.md).
 
 ## 4. Kết quả
 
-- Chi phí cơ sở là **4.472 đ/việc thành công** (simulated) trên 978 việc thành công. Giới hạn hai lần chạy cho tổng chi phí hệ thống thấp nhất trong ba kịch bản, **6.901.220 đ/1.200 yêu cầu** (simulated).
-- Chỉ số chính, tỷ lệ sửa hoặc bỏ gợi ý trong số yêu cầu được xem lại và tỷ lệ mở lại trong 7 ngày lần lượt là **82,83%**, **27,12%** và **4,25%** trong dữ liệu chạy thử. Hai bộ nhãn lỗi đồng thuận **19/20 ca (95%)**.
-- Hồ sơ đề xuất **Go có điều kiện** cho pilot nội địa và hàng nặng. Repo hiện chưa có kết quả hội đồng duyệt chéo dành cho nhóm.
+- Chi phí toàn mẫu: **4.472 đ/việc thành công** (simulated), gấp **16,3 lần** hóa đơn token và tool chia số yêu cầu. Phạm vi `noi_dia` + `hang_nang` có chi phí gồm cố định **4.599 đ/việc** ở 45.000 yêu cầu/tháng (simulated), so với mốc thủ công 12.000 đ.
+- Ba yếu tố nhạy nhất: làm lại gấp đôi **+51,8%**, xem lại gấp đôi **+40,7%**, lương tăng 25% **+23,1%** (simulated). Xem lại 100% có thể lên **12.415 đ/việc** (simulated), vượt mốc thủ công.
+- Bảng lỗi: **19/20 = 95%** đồng thuận ban đầu; ca 13 thống nhất **Giới hạn hệ thống**; có khắc phục cho **5/5 loại**.
+- Chỉ số toàn mẫu: đóng 24 giờ, không mở lại 7 ngày **82,83%**; sửa/bỏ gợi ý **27,12%**; mở lại **4,25%**. Đây là số liệu lab, chưa chứng minh tác động của trợ lý.
+- Pilot đề xuất **20 nhân viên/nhóm**, **299 yêu cầu/người**, tương đương **5.980 yêu cầu/nhóm**, mẫu hiệu dụng **859,20**; MDE 6 điểm phần trăm, power 0,80; giai đoạn phân tích chính **21 ngày** (~570 yêu cầu đủ điều kiện/ngày), ngày quyết định **26/01/2027**.
+- **Đề xuất: Go có điều kiện** cho kế hoạch pilot trong phạm vi đã chọn. Trước bật phải kiểm chứng chống hoàn trùng, ghi sổ, event, roster 40 người/12 depot và lưu lượng thực tế 4 tuần theo từng nhân viên; sau đó đo phút thật, kiểm soát an toàn và chi phí theo các cổng của hồ sơ launch.
+- **Duyệt chéo: Chờ hội đồng.** Chưa có điểm, quyết định hoặc phản hồi; [phiếu chấm](phieu_cham.md) chỉ hoàn thiện khi nhận hồ sơ nhóm được giao.
 
 ## 5. Khó khăn và cách xử lý
 
@@ -38,7 +39,7 @@ Với 20 nhân viên mỗi nhóm và ICC 0,02, mức cỡ mẫu hiệu dụng t�
 
 ## 7. Hạn chế và hướng cải thiện
 
-Dữ liệu chạy thử thiếu nhóm đối chứng để ước lượng tác động của trợ lý. Chi phí nhân công hiện dựa trên số phút giả lập. Pilot cần đo phút xem lại và làm lại thực tế, theo dõi tỷ lệ mở lại và đối soát sổ cái. Nếu mọi gợi ý hợp lệ đều phải xem lại và làm lại mất 15,3 phút/ca, chi phí mô hình lên **12.415 đ/việc thành công** (simulated), vượt mốc 12.000 đ của nhân viên tự làm.
+Phút xem lại/làm lại còn giả lập; ngưỡng an toàn và lịch pilot là đề xuất. CSV chỉ có 20 nhân viên tại 6 depot (tải mẫu lệch 39–73 yêu cầu đủ điều kiện/người), chưa chứng minh đủ roster 40 người tại 12 depot và lưu lượng thực tế theo nhân viên. Cần xác nhận nguồn lực và lưu lượng thực tế theo nhân viên (hoặc chốt kéo dài giai đoạn chính trước khi bật), đo phút thật, triển khai event và theo dõi đủ cửa sổ trước kết luận. Thịnh đã chạy lại kiểm tra `src/lab13.py` trên máy khác với máy viết code CP1; nhóm rà bản nộp và mỗi thành viên tự nộp link repo trên LMS.
 
 ## 8. Tài liệu tham khảo
 

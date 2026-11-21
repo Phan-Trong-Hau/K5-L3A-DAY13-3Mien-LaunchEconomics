@@ -77,6 +77,44 @@ Sao chép mục dưới đây cho từng thành viên.
 - [Kế hoạch pilot](report/team/pilot_plan.yaml), [rủi ro kinh tế](report/team/chi_so.md#e2--rủi-ro-kinh-tế)
 - [Báo cáo cá nhân](report/team/2A202603547_PhanTrongHau.md), [báo cáo nhóm](report/team/group_report.md), [hồ sơ Gate 2a](report/team/ho_so_launch_v0.md)
 
+## NgoDucThinh-2A202603548
+
+### Phần việc phụ trách
+
+- CP1–CP2: Kiểm số trước giải lao, đối chiếu kết quả A1–A4 và B1–B4, điền `report/team/bang_chi_phi.md`.
+- CP4: Viết code tính cỡ mẫu D1 và tỉ lệ `mo_lai_trong_7_ngay` trong `src/lab13.py`; hoàn thiện và cập nhật lịch lưu lượng trong `report/team/pilot_plan.yaml`.
+
+### Đóng góp cụ thể
+
+- Tính tay và đối chiếu toàn bộ số liệu chi phí A1–A4, độ nhạy B1–B4 (chi phí 4.472 đ/việc thành công `simulated`, tổng hệ thống tối ưu 6.901.220 đ ở giới hạn 2 lần chạy, kịch bản xem lại 100% ở 11.743–12.415 đ/việc `simulated`) và điền `report/team/bang_chi_phi.md`.
+- Hoàn thiện phần D1 và D3 trong `src/lab13.py`, hoàn thiện `report/team/pilot_plan.yaml` (MDE 6 điểm, 20 nhân viên/nhóm, 299 yêu cầu/người, điều chỉnh giai đoạn phân tích chính lên 21 ngày kèm cổng kiểm tra lưu lượng thực tế theo nhân viên trước khi bật) và chạy kiểm tra lại code trên máy riêng.
+
+### Bằng chứng
+
+- [Code CP4 và kiểm tra chạy lại](src/lab13.py)
+- [Bảng chi phí và độ nhạy](report/team/bang_chi_phi.md)
+- [Kế hoạch pilot](report/team/pilot_plan.yaml)
+- [Báo cáo cá nhân Ngô Đức Thịnh](report/team/2A202603548_NgoDucThinh.md)
+
+## VuQuangThai-2A202603545
+
+### Phần việc phụ trách
+
+- CP1–CP2: Viết mô hình chi phí A1–A4 và chạy các kịch bản độ nhạy B1–B4.
+- CP4–CP5: Đối chiếu cỡ mẫu pilot, cung cấp số liệu cho mục rủi ro kinh tế và tổng hợp hồ sơ nhóm.
+
+### Đóng góp cụ thể
+
+- Triển khai và chạy phần A–B trên hai bộ trace của lab. Cả ba phép thử A1 đều đạt. Chi phí cơ sở là 4.472 đ/việc thành công (simulated) và giới hạn hai lần chạy cho tổng chi phí hệ thống thấp nhất trong ba kịch bản B3.
+- Đối chiếu kết quả D1 trong script với kế hoạch pilot. Với 20 nhân viên mỗi nhóm, mức chênh tối thiểu 5 điểm cần khoảng 1.250 quan sát hiệu dụng mỗi nhóm, vượt mức trần 1.000. Mức chênh 6 điểm cần 859 quan sát hiệu dụng và ít nhất 299 yêu cầu mỗi nhân viên theo giả định của kế hoạch.
+- Ghi hai rủi ro kinh tế từ B1 và B4, tổng hợp báo cáo nhóm và hồ sơ Gate 2a từ các kết quả A–E.
+
+### Bằng chứng
+
+- [Code và kết quả A–B](src/lab13.py), [bảng chi phí và độ nhạy](report/team/bang_chi_phi.md)
+- [Kế hoạch pilot](report/team/pilot_plan.yaml), [rủi ro kinh tế](report/team/chi_so.md#e2--rủi-ro-kinh-tế)
+- [Báo cáo cá nhân](report/team/2A202603547_PhanTrongHau.md), [báo cáo nhóm](report/team/group_report.md), [hồ sơ Gate 2a](report/team/ho_so_launch_v0.md)
+
 ## HoVaTen-MSSV
 
 ### Phần việc phụ trách

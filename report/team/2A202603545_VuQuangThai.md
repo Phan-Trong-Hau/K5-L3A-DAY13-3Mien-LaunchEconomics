@@ -4,7 +4,7 @@
 
 - Họ tên: Vũ Quang Thái
 - MSSV: 2A202603545
-- Email: Chưa cung cấp
+- Email: qtvu2k5@gmail.com
 - Nhóm: 3Mien · Lớp: L3A
 - Vai trong nhóm: Người gắn nhãn 2, kiêm giữ hồ sơ.
 

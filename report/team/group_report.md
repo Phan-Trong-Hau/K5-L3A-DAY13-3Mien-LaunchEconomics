@@ -1,16 +1,13 @@
 # Báo cáo nhóm
 
-Báo cáo CP1–CP5 ngày 21/11/2026; phần duyệt chéo chờ hội đồng. Toàn bộ dữ liệu lab là giả lập; chi phí dùng phút `_simulated` được ghi nhãn `simulated`.
-
 ## 1. Thông tin nhóm
 
-- Tên nhóm: 3Mien
-- Lớp: L3A
-- Thành viên và phân công: xem [TEAM.md](../../TEAM.md)
+- Nhóm 3Mien, lớp L3A.
+- Thành viên và phân công theo checkpoint được ghi trong [TEAM.md](../../TEAM.md).
 
 ## 2. Mục tiêu và cách tiếp cận
 
-Đánh giá tính khả thi kinh tế và thiết kế pilot trợ lý hoàn phí LogiX-VN. Nhóm tổng hợp chi phí từ mọi lần chạy, kể cả lần lỗi, rồi chia cho số việc thành công; phân tích độ nhạy, phân loại lỗi độc lập và thiết kế đối chứng trước khi đề xuất Gate 2a.
+Nhóm đánh giá chi phí và rủi ro của trợ lý hoàn phí LogiX-VN để quyết định có nên chạy pilot Gate 2a cho yêu cầu nội địa và hàng nặng. Phân tích dùng 1.200 yêu cầu trong dữ liệu lab, hai bộ nhãn lỗi độc lập và kế hoạch thử nghiệm có đối chứng.
 
 ## 3. Giải pháp
 
@@ -31,11 +28,14 @@ Báo cáo CP1–CP5 ngày 21/11/2026; phần duyệt chéo chờ hội đồng. 
 
 ## 5. Khó khăn và cách xử lý
 
-Tối ưu chi phí trợ lý có thể đẩy việc sang nhân viên: giới hạn 1 lần chạy rẻ nhất theo chi phí/việc thành công, nhưng 2 lần rẻ nhất cho cả hệ thống (6.901.220 đ, simulated). Vì vậy nhóm xét cả chi phí chuyển thủ công. Thiết kế hiện tại chỉ có power khoảng 0,64 cho chênh 5 điểm; nhóm ghi rõ đánh đổi thay vì coi MDE 6 điểm là bảo đảm đạt mục tiêu kinh doanh 5 điểm.
+Với 20 nhân viên mỗi nhóm và ICC 0,02, mức cỡ mẫu hiệu dụng tối đa là 1.000 mỗi nhóm, dưới mức khoảng 1.250 cần để phát hiện chênh lệch 5 điểm phần trăm. Kế hoạch chuyển sang mức 6 điểm và đặt mục tiêu ít nhất 299 yêu cầu đủ điều kiện mỗi nhân viên. Với lỗi gắn nhãn, hai người giữ bộ nhãn ban đầu và ghi quy tắc phân biệt cho ca 13 sau khi đối chiếu.
 
 ## 6. Tổng hợp đóng góp
 
-Hậu phụ trách code trước giải lao, kiểm số sau giải lao và rủi ro kinh tế; Thịnh kiểm số trước giải lao, chủ trì code và pilot sau giải lao; Huy gắn nhãn 1, tổng hợp bảng lỗi và chỉ số; Thái gắn nhãn 2, giữ hồ sơ launch và tổng hợp báo cáo. Chi tiết, bằng chứng xem [TEAM.md](../../TEAM.md).
+- **Phan Trọng Hâu:** Code A–B, rủi ro kinh tế E2 và tổng hợp hai hồ sơ.
+- **Ngô Đức Thịnh:** Bảng chi phí, tính cỡ mẫu D1 và kế hoạch pilot.
+- **Bùi Gia Huy:** Gắn nhãn, tổng hợp bảng lỗi và đặc tả chỉ số, event.
+- **Vũ Quang Thái:** Gắn nhãn độc lập và đối chiếu kết quả CP3 cùng Huy.
 
 ## 7. Hạn chế và hướng cải thiện
 
@@ -43,5 +43,6 @@ Phút xem lại/làm lại còn giả lập; ngưỡng an toàn và lịch pilot
 
 ## 8. Tài liệu tham khảo
 
-- [Đề bài lab](../../docs/Ngay13_Lab13_De_bai_hoc_vien.docx), [hướng dẫn chi tiết](../../docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md), [dữ liệu và công thức](../../docs/du_lieu_va_cong_thuc.md).
-- [CHECKPOINTS](../../CHECKPOINTS.md), [quy tắc](../../RULES.md), [hướng dẫn nộp](../../SUBMISSION.md) và các file kết quả nhóm dẫn ở trên.
+- [Dữ liệu và công thức của lab](../../docs/du_lieu_va_cong_thuc.md)
+- [Hướng dẫn Lab 13](../../docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md)
+- [Script tái lập kết quả](../../src/lab13.py)

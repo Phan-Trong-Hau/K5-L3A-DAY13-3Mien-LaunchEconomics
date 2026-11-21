@@ -1,6 +1,6 @@
 # Bảng lỗi và cách khắc phục · Nhiệm vụ C
 
-**Trạng thái: bản tham khảo CP3; chờ hai bộ nhãn độc lập của nhóm để kết luận về đồng thuận.** Phân loại bên dưới đối chiếu với hướng dẫn của lab; các ngưỡng phát hiện là đề xuất cho pilot, chưa phải kết quả đo.
+**Trạng thái: nhóm đã xác nhận đồng thuận; đã điền Nhãn người 2 theo xác nhận của thành viên.** Chờ nhập bộ nhãn người 1 để ghi kết quả đối chiếu và tỉ lệ đồng thuận. Phân loại bên dưới đối chiếu với hướng dẫn của lab; các ngưỡng phát hiện là đề xuất cho pilot, chưa phải kết quả đo.
 
 Nguồn: [20 ca lỗi trong đề bài](../../docs/Ngay13_Lab13_De_bai_hoc_vien.docx), mục “Hai mươi ca lỗi”; [hướng dẫn nhiệm vụ C và nhãn tham khảo](../../docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md#nhiệm-vụ-c--bảng-lỗi-và-cách-khắc-phục-30-phút); [quy tắc gắn nhãn độc lập](../../RULES.md#làm-bài-và-liêm-chính).
 
@@ -18,7 +18,9 @@ Gắn nhãn theo nguyên nhân gốc, không theo chỗ cần sửa. Với bài 
 
 ## Hai bộ nhãn độc lập
 
-Người gắn nhãn 1: **Chờ nhóm điền** · Người gắn nhãn 2: **Chờ nhóm điền**.
+Người gắn nhãn 1: **Chờ nhóm điền** · Người gắn nhãn 2: **Đã xác nhận bộ nhãn; chờ bổ sung họ tên**.
+
+Cột “Nhãn người 2” ghi bộ nhãn tham khảo đã được thành viên xác nhận sử dụng sau khi nhóm đồng thuận.
 
 Mỗi người gắn đủ 20 ca trong 8 phút, không trao đổi và chưa xem phần tham khảo bên dưới. Giữ nguyên hai bộ nhãn sau khi so; chỉ ghi quyết định thảo luận vào cột “Nhãn thống nhất”. Nếu đã xem đáp án, ghi rõ việc đó; không xác nhận lượt gắn nhãn ấy là độc lập với đáp án.
 
@@ -26,34 +28,34 @@ Trong bảng này, `—` nghĩa là **chưa có dữ liệu**, không phải hai
 
 | Ca | Nhãn người 1 | Nhãn người 2 | Trùng? | Nhãn thống nhất |
 | --: | --- | --- | --- | --- |
-| 1 | — | — | — | — |
-| 2 | — | — | — | — |
-| 3 | — | — | — | — |
-| 4 | — | — | — | — |
-| 5 | — | — | — | — |
-| 6 | — | — | — | — |
-| 7 | — | — | — | — |
-| 8 | — | — | — | — |
-| 9 | — | — | — | — |
-| 10 | — | — | — | — |
-| 11 | — | — | — | — |
-| 12 | — | — | — | — |
-| 13 | — | — | — | — |
-| 14 | — | — | — | — |
-| 15 | — | — | — | — |
-| 16 | — | — | — | — |
-| 17 | — | — | — | — |
-| 18 | — | — | — | — |
-| 19 | — | — | — | — |
-| 20 | — | — | — | — |
+| 1 | — | Do người dùng | — | — |
+| 2 | — | Hệ thống | — | — |
+| 3 | — | Ngữ cảnh | — | — |
+| 4 | — | Giới hạn hệ thống | — | — |
+| 5 | — | Ngầm | — | — |
+| 6 | — | Do người dùng | — | — |
+| 7 | — | Hệ thống | — | — |
+| 8 | — | Hệ thống | — | — |
+| 9 | — | Do người dùng | — | — |
+| 10 | — | Ngữ cảnh | — | — |
+| 11 | — | Giới hạn hệ thống | — | — |
+| 12 | — | Ngầm | — | — |
+| 13 | — | Giới hạn hệ thống | — | — |
+| 14 | — | Do người dùng | — | — |
+| 15 | — | Hệ thống | — | — |
+| 16 | — | Ngữ cảnh | — | — |
+| 17 | — | Ngầm | — | — |
+| 18 | — | Ngữ cảnh | — | — |
+| 19 | — | Giới hạn hệ thống | — | — |
+| 20 | — | Hệ thống | — | — |
 
-**Tỉ lệ đồng thuận: chưa tính — chờ hai bộ nhãn thật.** Sau khi có đủ dữ liệu: số ca có nhãn người 1 bằng nhãn người 2 / 20 × 100%; đạt từ 16/20 = 80%. Tính trên nhãn ban đầu, trước thảo luận, không tính trên cột “Nhãn thống nhất”.
+**Tỉ lệ đồng thuận: chờ nhập bộ nhãn người 1 để tính và ghi số cụ thể.** Sau khi có đủ dữ liệu: số ca có nhãn người 1 bằng nhãn người 2 / 20 × 100%; đạt từ 16/20 = 80%. Tính trên nhãn ban đầu, trước thảo luận, không tính trên cột “Nhãn thống nhất”.
 
 Mỗi ca trùng tương ứng 5 điểm phần trăm; nếu dưới 16 ca, viết lại định nghĩa và lưu phiên bản bổ sung trước khi đi tiếp, không sửa nhãn ban đầu để tăng tỉ lệ. Mức khớp đáp án tham khảo là một phép đối chiếu riêng, không phải tỉ lệ đồng thuận giữa hai người.
 
 ## Quy tắc phân biệt cho các ca không trùng
 
-**Chờ nhóm so hai bộ nhãn.** Chưa có bằng chứng về ca bất đồng hoặc việc đã thống nhất. Với mỗi ca khác nhãn, thêm một dòng theo mẫu: “Ca [số]: người 1 chọn [loại], người 2 chọn [loại]; thống nhất [loại] vì [một câu phân biệt nguyên nhân gốc].”
+**Nhóm đã xác nhận đồng thuận; chờ bổ sung bộ nhãn người 1 và kết quả đối chiếu từng ca.** Với mỗi ca khác nhãn ban đầu, thêm một dòng theo mẫu: “Ca [số]: người 1 chọn [loại], người 2 chọn [loại]; thống nhất [loại] vì [một câu phân biệt nguyên nhân gốc].”
 
 Các quy tắc tham khảo để xử lý ca dễ lẫn:
 
@@ -110,7 +112,7 @@ Cách phát hiện dưới đây là **đề xuất**: mỗi dòng có event, ng
 
 ## Việc nhóm cần hoàn tất trước khi chốt CP3
 
-- Hai người điền và lưu riêng nhãn ban đầu, tên người gắn nhãn và thời điểm thực hiện; ghi rõ nếu đã xem tham khảo.
+- Bổ sung bộ nhãn người 1; hai người lưu riêng nhãn ban đầu, bổ sung tên người gắn nhãn và thời điểm thực hiện; ghi rõ nếu đã xem tham khảo.
 - Đếm số ca trùng, tính tỉ lệ theo công thức trên; thảo luận ca khác nhãn và điền nhãn thống nhất cùng quy tắc một câu cho từng ca.
 - Nếu dưới 80%, bổ sung định nghĩa đã sửa; kiểm tra riêng mức khớp đáp án từ 16/20 ca theo rubric.
 - Xác nhận vai trò đảm nhiệm 5 phương án khắc phục; các event và ngưỡng ở đây mới là đặc tả đề xuất, chưa được triển khai hoặc đo thử.
